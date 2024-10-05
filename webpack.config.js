@@ -25,9 +25,9 @@ module.exports = {
   },
 
   plugins: [
-    new HtmlWebpackPlugin({ template: "./index.html" }),
     new CopyWebpackPlugin({
       patterns: [
+        { from: "./index.html", to: "./index.html" },
         { from: "manifest.json", to: "manifest.json" },
         { from: "sw-src.js", to: "sw.js" },
         { from: "./assets", to: "./assets" },

@@ -1,4 +1,4 @@
-var version = 1.1;
+var version = 1.2;
 const CACHE_NAME = "PWA using Typescript";
 
 // Service Worker Install
@@ -6,6 +6,8 @@ self.addEventListener("install", (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
       return cache.addAll([
+        "./assets/static-images/icon512_maskable.png",
+        "./assets/static-images/icon512_rounded.png",
         "./assets/static-images/favicon.png",
         "./assets/static-images/icon.png",
         "./index.js",
