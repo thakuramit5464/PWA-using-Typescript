@@ -51,7 +51,7 @@ function trackWorker(worker: any) {
 
 function handleUpdates(workerState: String) {
   console.log(">>>>>>>>>>>>>>..", workerState);
-  let text: string = "Update Found\nPress ok to update";
+  let text: string = "Update Found dude ;)\nPress ok to update";
   const userConfirmed: boolean = confirm(text);
   if (userConfirmed) {
     window.location.reload();
