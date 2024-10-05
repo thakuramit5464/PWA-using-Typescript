@@ -1,4 +1,4 @@
-var version = 1.0;
+var version = 1.1;
 const CACHE_NAME = "PWA using Typescript";
 
 // Service Worker Install

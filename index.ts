@@ -1,6 +1,5 @@
 import { printHello } from "./src/hello";
 
-let isReloading = false;
 // Register the service worker if supported
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
@@ -50,20 +49,12 @@ function trackWorker(worker: any) {
   });
 }
 
-// Function to trigger reload once
-function triggerReload() {
-  if (!isReloading) {
-    isReloading = true;
-    console.log("Triggering page reload...");
-    window.location.reload();
-  }
-}
 function handleUpdates(workerState: String) {
   console.log(">>>>>>>>>>>>>>..", workerState);
   let text: string = "Update Found\nPress ok to update";
   const userConfirmed: boolean = confirm(text);
   if (userConfirmed) {
-    triggerReload();
+    window.location.reload();
   }
 }
 // Listen for messages from the service worker
