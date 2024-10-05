@@ -1,4 +1,4 @@
-var version = 2;
+var version = 1.2;
 const CACHE_NAME = "PWA using Typescript";
 self.addEventListener("install", (e) => {
   e.waitUntil(
