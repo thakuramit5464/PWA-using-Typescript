@@ -32,8 +32,9 @@ export class app {
       localStorage.setItem("Name", input.value);
       this.introContainer.style.display = "none";
     });
-    input.addEventListener("keydown", (event) => {
-      if (event.key === "enter") {
+    this.introContainer.addEventListener("keydown", (event) => {
+      if (event.key === "Enter") {
+        console.log(">>>>>>>>>>");
         localStorage.setItem("Name", input.value);
         this.introContainer.style.display = "none";
       }
