@@ -1,5 +1,46 @@
 import { printHello } from "./src/hello";
 
+export class app {
+  private introContainer: HTMLElement;
+  constructor() {
+    this.introContainer = document.getElementById("intro-div") as HTMLElement;
+    console.log(localStorage.getItem("Name") === null);
+    if (localStorage.getItem("Name") === null) {
+      this.createIntro();
+    }
+  }
+  createIntro() {
+    const heading = document.createElement("h1");
+    heading.innerText = "Enter you name:";
+    const input = document.createElement("input");
+    input.type = "text";
+    input.placeholder = "Enter your name: ";
+
+    const button = document.createElement("button");
+    button.textContent = "Submit";
+    this.addInputEventListener(button, input);
+    this.introContainer.appendChild(heading);
+    this.introContainer.appendChild(input);
+    this.introContainer.appendChild(button);
+    this.introContainer.style.display = "flex";
+  }
+  addInputEventListener(button: HTMLElement, input: HTMLInputElement) {
+    this.introContainer.addEventListener("click", (event: MouseEvent) => {
+      console.log(">>>>>>>>>>>>>>");
+    });
+    button.addEventListener("click", () => {
+      localStorage.setItem("Name", input.value);
+      this.introContainer.style.display = "none";
+    });
+    input.addEventListener("keydown", (event) => {
+      if (event.key === "enter") {
+        localStorage.setItem("Name", input.value);
+        this.introContainer.style.display = "none";
+      }
+    });
+  }
+}
+
 // Register the service worker if supported
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
@@ -50,8 +91,9 @@ function trackWorker(worker: any) {
 }
 
 function handleUpdates(workerState: String) {
-  console.log(">>>>>>>>>>>>>>..", workerState);
-  let text: string = "Update Found dude ;)\nPress ok to update";
+  let text: string = `Update Found ${localStorage.getItem(
+    "Name"
+  )} ;)\nPress ok to update`;
   const userConfirmed: boolean = confirm(text);
   if (userConfirmed) {
     window.location.reload();
@@ -84,5 +126,6 @@ window.addEventListener("message", (event) => {
 
 console.log("Script initialized. Checking service worker registration...");
 
+const newApp = new app();
 // Run any other logic
 printHello();
